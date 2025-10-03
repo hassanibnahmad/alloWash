@@ -1,5 +1,6 @@
 import { Car, Shield, Clock, Star, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import carCareImage from '../assets/close-up-car-care-process.jpg';
 
 interface AccueilProps {
   onNavigate: (page: string) => void;
@@ -36,8 +37,21 @@ export default function Accueil({ onNavigate }: AccueilProps) {
   return (
     <div className="animate-fade-in">
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 gradient-dark opacity-90"></div>
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0D47A1]/20 to-[#0A0F1C]"></div>
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: `url(${carCareImage})`,
+          }}
+        ></div>
+        
+        {/* Modern Overlay with Multiple Layers */}
+        <div className="absolute inset-0 bg-[#0A0F1C]/85"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0D47A1]/30 via-transparent to-[#1976D2]/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C]/90 via-transparent to-transparent"></div>
+        
+        {/* Subtle Texture Overlay */}
+        <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-white/5 via-transparent to-black/5"></div>
 
         <div className="relative z-10 text-center px-4 animate-slide-up">
           <div className="mb-6">

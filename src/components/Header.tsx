@@ -93,13 +93,6 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
           </div>
         </div>
       )}
-      <button
-  onClick={() => onNavigate('admin')}
-  className="hidden"
-  id="admin-link"
->
-  Admin
-</button>
     </header>
   );
 }

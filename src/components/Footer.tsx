@@ -76,6 +76,13 @@ export default function Footer({ onNavigate }: FooterProps) {
 
         <div className="border-t border-gray-800 pt-8 text-center text-gray-400">
           <p>© 2025 Allowash Detailing - Tous droits réservés</p>
+          <button
+            onClick={() => onNavigate('admin')}
+            className="mt-2 text-xs text-gray-600 hover:text-gray-400 transition-colors opacity-30 hover:opacity-100"
+            style={{ fontSize: '8px' }}
+          >
+            •
+          </button>
         </div>
       </div>
     </footer>

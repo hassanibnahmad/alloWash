@@ -73,7 +73,7 @@ function App() {
       <Header currentPage={currentPage} onNavigate={handleNavigate} />
       <main>{renderPage()}</main>
       <Footer onNavigate={handleNavigate} />
-      <WhatsAppWidget />
+      <WhatsAppWidget currentPage={currentPage} />
     </div>
   );
 }

@@ -92,21 +92,45 @@ export default function ZoneDeService({ onNavigate }: ZoneDeServiceProps) {
             <div className="space-y-6">
               <div className="bg-[#0A0F1C]/50 rounded-2xl border border-blue-900/30 p-8 h-full">
                 <h2 className="text-2xl font-bold mb-6">Carte Interactive</h2>
-                <div className="aspect-square rounded-xl bg-gradient-to-br from-[#0D47A1]/20 to-[#1976D2]/20 border border-blue-900/30 flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-64 h-64 rounded-full bg-[#0D47A1]/30 animate-pulse"></div>
+                <div className="aspect-square rounded-xl border border-blue-900/30 overflow-hidden relative">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d106543.69065419178!2d-7.683045!3d33.5928!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7cd4778aa113b%3A0xb06c1d84f310fd3!2sCasablanca%2C%20Morocco!5e0!3m2!1sen!2s!4v1696350000000!5m2!1sen!2s"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    className="rounded-xl"
+                  ></iframe>
+                  <div className="absolute top-4 left-4 bg-[#0A0F1C]/90 backdrop-blur-sm rounded-lg px-3 py-2 border border-blue-900/30">
+                    <div className="flex items-center gap-2">
+                      <MapPin size={16} className="text-[#0D47A1]" />
+                      <span className="text-sm font-medium">Casablanca</span>
+                    </div>
                   </div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-48 h-48 rounded-full bg-[#0D47A1]/40 animate-pulse delay-75"></div>
-                  </div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="w-32 h-32 rounded-full bg-[#0D47A1]/50 animate-pulse delay-150"></div>
-                  </div>
-                  <MapPin size={64} className="text-[#0D47A1] relative z-10" />
                 </div>
                 <p className="text-center text-gray-400 mt-6">
-                  Zone de service couvrant l'ensemble de Casablanca
+                  Zone de service couvrant l'ensemble de Casablanca et ses environs
                 </p>
+                <div className="mt-4 grid grid-cols-2 gap-4 text-sm">
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <div className="w-3 h-3 rounded-full bg-[#0D47A1]"></div>
+                    <span>Centre-ville</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <div className="w-3 h-3 rounded-full bg-[#1976D2]"></div>
+                    <span>Quartiers résidentiels</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <div className="w-3 h-3 rounded-full bg-[#42A5F5]"></div>
+                    <span>Zones d'affaires</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-gray-300">
+                    <div className="w-3 h-3 rounded-full bg-[#64B5F6]"></div>
+                    <span>Périphérie</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
