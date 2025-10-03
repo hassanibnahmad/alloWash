@@ -1,5 +1,5 @@
 import { Car, Shield, Clock, Star, ChevronDown } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import carCareImage from '../assets/close-up-car-care-process.jpg';
 
 interface AccueilProps {
@@ -8,6 +8,14 @@ interface AccueilProps {
 
 export default function Accueil({ onNavigate }: AccueilProps) {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  // Preload the background image
+  useEffect(() => {
+    const img = new Image();
+    img.onload = () => setImageLoaded(true);
+    img.src = carCareImage;
+  }, []);
 
   const avis = [
     { name: 'Amine', text: 'Ma voiture est comme neuve ! Service impeccable.', rating: 5 },
@@ -37,21 +45,23 @@ export default function Accueil({ onNavigate }: AccueilProps) {
   return (
     <div className="animate-fade-in">
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
+        {/* Fast-loading gradient placeholder */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0A0F1C] via-[#1a2332] to-[#0D47A1]/40"></div>
+        
+        {/* Background Image with lazy loading */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+            imageLoaded ? 'opacity-100' : 'opacity-0'
+          }`}
           style={{
-            backgroundImage: `url(${carCareImage})`,
+            backgroundImage: imageLoaded ? `url(${carCareImage})` : 'none',
           }}
         ></div>
         
         {/* Modern Overlay with Multiple Layers */}
-        <div className="absolute inset-0 bg-[#0A0F1C]/85"></div>
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0D47A1]/30 via-transparent to-[#1976D2]/20"></div>
+        <div className="absolute inset-0 bg-[#0A0F1C]/75"></div>
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0D47A1]/20 via-transparent to-[#1976D2]/15"></div>
         <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F1C]/90 via-transparent to-transparent"></div>
-        
-        {/* Subtle Texture Overlay */}
-        <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-white/5 via-transparent to-black/5"></div>
 
         <div className="relative z-10 text-center px-4 animate-slide-up">
           <div className="mb-6">
