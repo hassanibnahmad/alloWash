@@ -16,15 +16,59 @@ function App() {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
+  // URL routing mapping
+  const routeMapping: { [key: string]: string } = {
+    '/': 'accueil',
+    '/home': 'accueil',
+    '/accueil': 'accueil',
+    '/services': 'services',
+    '/tarifs': 'tarifs',
+    '/zone-de-service': 'zone-de-service',
+    '/promotions': 'promotions',
+    '/contact': 'contact',
+    '/admin': 'admin'
+  };
+
+  const pageToUrl: { [key: string]: string } = {
+    'accueil': '/',
+    'services': '/services',
+    'tarifs': '/tarifs',
+    'zone-de-service': '/zone-de-service',
+    'promotions': '/promotions',
+    'contact': '/contact',
+    'admin': '/admin'
+  };
+
   useEffect(() => {
     const path = window.location.pathname;
+    
     if (path === '/admin') {
       setIsAdmin(true);
       const auth = sessionStorage.getItem('adminAuth');
       if (auth === 'true') {
         setIsAuthenticated(true);
       }
+    } else {
+      setIsAdmin(false);
+      // Map URL to page
+      const page = routeMapping[path] || 'accueil';
+      setCurrentPage(page);
     }
+
+    // Listen for browser back/forward navigation
+    const handlePopState = () => {
+      const newPath = window.location.pathname;
+      const newPage = routeMapping[newPath] || 'accueil';
+      setCurrentPage(newPage);
+      if (newPath === '/admin') {
+        setIsAdmin(true);
+      } else {
+        setIsAdmin(false);
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   const handleLogin = () => {
@@ -38,8 +82,51 @@ function App() {
   };
 
   const handleNavigate = (page: string) => {
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Add smooth transition effect
+    const mainElement = document.querySelector('main');
+    if (mainElement) {
+      mainElement.classList.add('page-transition-out');
+      
+      setTimeout(() => {
+        setCurrentPage(page);
+        const url = pageToUrl[page] || '/';
+        window.history.pushState(null, '', url);
+        
+        // Handle admin navigation
+        if (page === 'admin') {
+          setIsAdmin(true);
+        } else {
+          setIsAdmin(false);
+        }
+        
+        // Add entrance animation
+        mainElement.classList.remove('page-transition-out');
+        mainElement.classList.add('page-transition');
+        
+        // Smooth scroll to top with custom easing
+        window.scrollTo({ 
+          top: 0, 
+          behavior: 'smooth'
+        });
+        
+        // Remove animation class after completion
+        setTimeout(() => {
+          mainElement.classList.remove('page-transition');
+        }, 800);
+      }, 300);
+    } else {
+      // Fallback if main element not found
+      setCurrentPage(page);
+      const url = pageToUrl[page] || '/';
+      window.history.pushState(null, '', url);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      if (page === 'admin') {
+        setIsAdmin(true);
+      } else {
+        setIsAdmin(false);
+      }
+    }
   };
 
   const renderPage = () => {

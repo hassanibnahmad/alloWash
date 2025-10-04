@@ -1,6 +1,7 @@
 import { Car, Shield, Clock, Star, ChevronDown } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import carCareImage from '../assets/close-up-car-care-process.jpg';
+import aboutImage from '../assets/about.jpg';
 
 interface AccueilProps {
   onNavigate: (page: string) => void;
@@ -90,18 +91,18 @@ export default function Accueil({ onNavigate }: AccueilProps) {
       <section className="py-20 px-4 bg-gradient-to-b from-[#0A0F1C] to-[#1a2332]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="text-center p-8 bg-[#0A0F1C]/50 rounded-xl border border-blue-900/30 hover:border-blue-500/50 transition-all duration-300 transform hover:scale-105">
-              <Shield size={48} className="mx-auto text-[#0D47A1] mb-4" />
+            <div className="animate-scale-in stagger-1 text-center p-8 bg-[#0A0F1C]/50 rounded-xl border border-blue-900/30 hover:border-blue-500/50 transition-all duration-300 transform hover:scale-105">
+              <Shield size={48} className="mx-auto text-[#0D47A1] mb-4 animate-float" />
               <h3 className="text-xl font-bold mb-2">Qualité Premium</h3>
               <p className="text-gray-400">Produits professionnels et techniques de pointe</p>
             </div>
-            <div className="text-center p-8 bg-[#0A0F1C]/50 rounded-xl border border-blue-900/30 hover:border-blue-500/50 transition-all duration-300 transform hover:scale-105">
-              <Clock size={48} className="mx-auto text-[#0D47A1] mb-4" />
+            <div className="animate-scale-in stagger-2 text-center p-8 bg-[#0A0F1C]/50 rounded-xl border border-blue-900/30 hover:border-blue-500/50 transition-all duration-300 transform hover:scale-105">
+              <Clock size={48} className="mx-auto text-[#0D47A1] mb-4 animate-float" />
               <h3 className="text-xl font-bold mb-2">Service Rapide</h3>
               <p className="text-gray-400">Intervention rapide et efficace à domicile</p>
             </div>
-            <div className="text-center p-8 bg-[#0A0F1C]/50 rounded-xl border border-blue-900/30 hover:border-blue-500/50 transition-all duration-300 transform hover:scale-105">
-              <Star size={48} className="mx-auto text-[#0D47A1] mb-4" />
+            <div className="animate-scale-in stagger-3 text-center p-8 bg-[#0A0F1C]/50 rounded-xl border border-blue-900/30 hover:border-blue-500/50 transition-all duration-300 transform hover:scale-105">
+              <Star size={48} className="mx-auto text-[#0D47A1] mb-4 animate-float" />
               <h3 className="text-xl font-bold mb-2">Satisfaction Garantie</h3>
               <p className="text-gray-400">Des centaines de clients satisfaits</p>
             </div>
@@ -112,7 +113,7 @@ export default function Accueil({ onNavigate }: AccueilProps) {
       <section className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            <div className="animate-slide-up">
+            <div className="animate-slide-in-left">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">
                 Qui sommes-nous ?
               </h2>
@@ -129,12 +130,19 @@ export default function Accueil({ onNavigate }: AccueilProps) {
                 Découvrir nos services
               </button>
             </div>
-            <div className="relative">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-[#0D47A1] to-[#1976D2] p-1">
-                <div className="w-full h-full rounded-2xl bg-[#0A0F1C] flex items-center justify-center">
-                  <Car size={200} className="text-[#0D47A1] opacity-50" />
+            <div className="relative animate-slide-in-right">
+              <div className="aspect-square rounded-2xl bg-gradient-to-br from-[#0D47A1] to-[#1976D2] p-1 shadow-2xl">
+                <div className="w-full h-full rounded-2xl overflow-hidden">
+                  <img 
+                    src={aboutImage} 
+                    alt="Équipe Allowash Detailing" 
+                    className="w-full h-full object-cover rounded-2xl hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
               </div>
+              {/* Decorative elements */}
+              <div className="absolute -top-4 -right-4 w-8 h-8 bg-[#0D47A1] rounded-full opacity-60 animate-float"></div>
+              <div className="absolute -bottom-4 -left-4 w-6 h-6 bg-[#1976D2] rounded-full opacity-40 animate-float stagger-2"></div>
             </div>
           </div>
         </div>

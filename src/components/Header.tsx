@@ -35,9 +35,9 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
               <button
                 key={item.link}
                 onClick={() => onNavigate(item.link)}
-                className={`transition-all duration-300 ${
+                className={`nav-item cursor-pointer transition-all duration-300 ${
                   currentPage === item.link
-                    ? 'text-[#0D47A1] font-semibold'
+                    ? 'text-[#0D47A1] font-semibold active'
                     : 'text-gray-300 hover:text-white'
                 }`}
               >
@@ -48,7 +48,7 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
 
           <button
             onClick={() => onNavigate('contact')}
-            className="hidden md:block px-6 py-3 rounded-full gradient-blue text-white font-semibold hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105"
+            className="hidden md:block px-6 py-3 rounded-full gradient-blue text-white font-semibold hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 transform hover:scale-105 cursor-pointer"
           >
             Réserver
           </button>
@@ -63,16 +63,16 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
       </div>
 
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#0A0F1C] border-t border-blue-900/30 animate-fade-in">
+        <div className="md:hidden bg-[#0A0F1C] border-t border-blue-900/30 animate-slide-up">
           <div className="px-4 py-4 space-y-3">
-            {menuItems.map((item) => (
+            {menuItems.map((item, index) => (
               <button
                 key={item.link}
                 onClick={() => {
                   onNavigate(item.link);
                   setMobileMenuOpen(false);
                 }}
-                className={`block w-full text-left py-2 px-4 rounded transition-all ${
+                className={`block w-full text-left py-2 px-4 rounded transition-all cursor-pointer animate-fade-in stagger-${index + 1} ${
                   currentPage === item.link
                     ? 'bg-[#0D47A1] text-white'
                     : 'text-gray-300 hover:bg-gray-800'
@@ -86,7 +86,7 @@ export default function Header({ currentPage, onNavigate }: HeaderProps) {
                 onNavigate('contact');
                 setMobileMenuOpen(false);
               }}
-              className="w-full px-6 py-3 rounded-full gradient-blue text-white font-semibold"
+              className="w-full px-6 py-3 rounded-full gradient-blue text-white font-semibold cursor-pointer animate-fade-in stagger-6"
             >
               Réserver
             </button>

@@ -53,10 +53,10 @@ export default function Contact() {
                     <div>
                       <h3 className="font-semibold mb-1">Téléphone</h3>
                       <a
-                        href="tel:+212612345678"
+                        href="tel:+212702158509"
                         className="text-gray-400 hover:text-[#0D47A1] transition-colors"
                       >
-                        +212 6 12 34 56 78
+                        +212 702-158509
                       </a>
                     </div>
                   </div>
@@ -92,7 +92,7 @@ export default function Contact() {
                 <h2 className="text-2xl font-bold mb-6">Suivez-nous</h2>
                 <div className="grid grid-cols-3 gap-4">
                   <a
-                    href="https://facebook.com/allowash"
+                    href="https://facebook.com/allowash1"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex flex-col items-center p-4 rounded-xl bg-blue-600/10 border border-blue-600/30 hover:bg-blue-600/20 transition-all duration-300 group"
@@ -101,7 +101,7 @@ export default function Contact() {
                     <span className="text-sm text-gray-400">Facebook</span>
                   </a>
                   <a
-                    href="https://instagram.com/allowash"
+                    href="https://instagram.com/allowash1"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex flex-col items-center p-4 rounded-xl bg-pink-600/10 border border-pink-600/30 hover:bg-pink-600/20 transition-all duration-300 group"
@@ -110,7 +110,7 @@ export default function Contact() {
                     <span className="text-sm text-gray-400">Instagram</span>
                   </a>
                   <a
-                    href="https://tiktok.com/@allowash"
+                    href="https://tiktok.com/@allowash1"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex flex-col items-center p-4 rounded-xl bg-gray-600/10 border border-gray-600/30 hover:bg-gray-600/20 transition-all duration-300 group"
@@ -127,7 +127,7 @@ export default function Contact() {
                   Réponse rapide et devis instantané via WhatsApp
                 </p>
                 <a
-                  href="https://wa.me/212612345678"
+                  href="https://wa.me/212702158509"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center px-6 py-3 rounded-full bg-green-500 text-white font-semibold hover:bg-green-600 transition-all duration-300 transform hover:scale-105"

@@ -3,7 +3,7 @@ interface WhatsAppWidgetProps {
 }
 
 export default function WhatsAppWidget({ currentPage }: WhatsAppWidgetProps) {
-  const phoneNumber = "+212661234567"; // Replace with your actual WhatsApp number
+  const phoneNumber = "+212702158509"; // Replace with your actual WhatsApp number
   const message = "Bonjour Allowash! J'aimerais avoir des informations sur vos services de lavage auto.";
   
   // Hide the button on admin page
